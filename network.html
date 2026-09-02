@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automated Media Stack - Jellyfin Pipeline</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="back-link">&larr; Back to Landing Page</a>
+  </nav>
+
+
+  <h1>COMING SOON</h1>
+<!-- 
+  <header>
+    <h1>Automated Media Stack</h1>
+    <p>A resilient, event-driven media processing stack hosted on isolated Proxmox VE LXC containers and backed by an OpenMediaVault NFS storage pool with zero-copy hardlinks.</p>
+    
+    <div class="badge-grid">
+      <span class="badge">Proxmox VE</span>
+      <span class="badge">LXC Containers</span>
+      <span class="badge">OpenMediaVault 8</span>
+      <span class="badge">NFS Mounts</span>
+      <span class="badge">mergerfs &amp; SnapRAID</span>
+      <span class="badge">Intel QuickSync (VAAPI)</span>
+      <span class="badge">Nginx Proxy Manager</span>
+    </div>
+  </header> -->
+
+  <!-- System Architecture Diagram Card -->
+  <!-- <div class="section-card">
+    <div class="section-title">
+      <span>System Integration Topology</span>
+    </div>
+    <div class="diagram-container">
+      <img src="images/frigate.svg" alt="Media Server Stack Topology" class="diagram-image">
+    </div>
+  </div> -->
+
+<!-- Detailed Data Flow Lifecycle -->
+  <!-- <div class="section-card">
+    <div class="section-title">
+      <span>End-to-End Execution</span>
+    </div>
+    <ol class="workflow-list">
+      <li>
+        <strong>Client / User Request:</strong> The client issues a secure request to stream or download media.
+      </li>
+      <li>
+        <strong>HTTPS Reverse Proxy:</strong> The request travels through Nginx Proxy Manager which routes traffic to Seerr or Jellyfin.
+      </li>
+      <li>
+        <strong>Trigger Request:</strong> Seerr processes the user request and sends a REST API payload to Sonarr (TV) or Radarr (Movies) to add the requested media.
+      </li>
+      <li>
+        <strong>Download Job:</strong> Sonarr/Radarr queries indexers via Prowlarr, evaluates the indexed releases, and sends a download task to SABnzbd if a release matches the configured quality profile.
+      </li>
+      <li>
+        <strong>Write to NFS:</strong> SABnzbd fetches the media release, extracts the files, and writes the completed download to the NFS mount of OMV, located in <code>/mnt/storage/downloads/complete/</code>.
+      </li>
+      <li>
+        <strong>Hardlink:</strong> Sonarr/Radarr detects job completion, creates an instant zero-copy hardlink from <code>/mnt/storage/downloads/complete/</code> to <code>/mnt/storage/data/media/</code>, and triggers Bazarr to search and download matching subtitles.
+      </li>
+      <li>
+        <strong>Read Media:</strong> Jellyfin monitors the media libraries within <code>/mnt/storage/data/media/</code>, reading structured files over the local network, and rendering streams using Intel QuickSync hardware transcoding.
+      </li>
+    </ol>
+  </div> -->
+
+  <!-- Key Architecture Engineering Highlights -->
+  <!-- <div class="section-card">
+    <div class="section-title">
+      <span>Infrastructure Highlights</span>
+    </div>
+    <div class="grid-2">
+      <div class="feature-card">
+        <h3>01. Zero-Copy Hardlink Execution</h3>
+        <p>Configured <code>mergerfs</code> storage pools across OpenMediaVault NFS mounts. By aligning root storage paths, the automation stack issues instant filesystem inode references (hardlinks) from scratch space to production libraries without duplicate disk writes or cross-network copies.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>02. Hardware-Accelerated Transcoding</h3>
+        <p>Provisioned Intel QuickSync GPU passthrough into unprivileged Proxmox LXC containers. Configured Linux device node permissions (<code>/dev/dri/renderD128</code>) to execute real-time video transcoding via VAAPI hardware pipelines with minimal CPU overhead.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>03. Reverse Proxy &amp; Network Isolation</h3>
+        <p>Routed all ingress control traffic through Nginx Proxy Manager to manage SSL certificates. Internal service communication resides strictly on isolated container subnets, exposing only required reverse proxy ports.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>04. Storage Redundancy &amp; Parity</h3>
+        <p>Implemented SnapRAID parity protection alongside <code>mergerfs</code> storage pooling on the OpenMediaVault NAS host, protecting pooled data from single-disk hardware failures.</p>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Screenshot -->
+  <!-- <div class="section-card">
+    <div class="section-title">
+      <span>System Screenshots</span>
+    </div>
+    <div class="grid-2">
+      <div class="screenshot-card"> -->
+        <!-- <img src="images/proxmox.png" alt="Proxmox Summary"> -->
+        <!-- <div class="screenshot-info">
+          <h4>Proxmox VE Microservice Orchestration</h4>
+          <p>Proxmox VE datacenter view showcasing isolated LXC containers with low background resource overhead.</p>
+        </div>
+      </div>
+      <div class="screenshot-card"> -->
+        <!-- <img src="images/omv.png" alt="OpenMediaVault NFS Shares"> -->
+        <!-- <div class="screenshot-info">
+          <h4>NAS Storage Pool &amp; NFS Mounts</h4>
+          <p>OpenMediaVault dashboard displaying 21.6 TB mergerfs-pooled capacity across physical drives alongside real-time S.M.A.R.T. health monitoring.</p>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6"/>
+    </svg>
+  </button>
+  <script>
+    const backToTopBtn = document.getElementById('backToTop');
+
+    // Show button when scrolled down 300px
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Smooth scroll to top on click
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+  <footer>
+    <p>Jackson Piet &mdash; Systems &amp; Software Specialist &mdash; Oak Ridge, TN</p>
+  </footer>
+  
+</body>
+</html>

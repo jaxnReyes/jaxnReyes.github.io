@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jackson Piet | B.S. Computer Science Graduate</title>
+    <link rel="stylesheet" href="styles.css">
+
+   
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- 1. Header & Technical Identity -->
+        <header id="top">
+            <div class="header-top">
+                <h1>Jackson Piet <span class="degree-tag">| B.S. Computer Science Graduate</span></h1>
+            </div>
+            <div class="subhead">Platform Infrastructure, Linux Systems & Automated Pipelines</div>
+            <div class="meta-info">
+                Oak Ridge, TN
+            </div>
+            <div class="header-links">
+                <a href="mailto:jacksonpiet13@gmail.com" class="btn btn-primary">Email</a>
+                <a href="JacksonPiet_Resume_ORNL.pdf" target="_blank" class="btn btn-outline">Resume (PDF Download)</a>
+            </div>
+        </header>
+
+        <!-- 2. About / Core Focus -->
+        <section id="about">
+            <h2 class="section-title">Professional Summary</h2>
+            <p class="summary-text">
+                Computer Science graduate with hands-on experience in bare-metal infrastructure, network virtualization, and containerized platform operations. Specialized in designing segmented network topologies, automated container deployments, and local edge AI pipelines. Currently seeking platform engineering and software development opportunities.
+            </p>
+        </section>
+
+        <!-- 3. Core Tech Stack -->
+        <section id="tech-stack">
+            <h2 class="section-title">Core Technical Stack</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Infrastructure & Virtualization</h3>
+                    <div class="badge-list">
+                        <span class="badge">Proxmox VE</span>
+                        <span class="badge">Docker</span>
+                        <span class="badge">Linux (Debian/Ubuntu)</span>
+                        <span class="badge">OPNsense</span>
+                        <span class="badge">NFS</span>
+                        <span class="badge">SnapRAID</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Enterprise Networking & Security</h3>
+                    <div class="badge-list">
+                        <span class="badge">Fortinet / FortiGate</span>
+                        <span class="badge">Managed Switches</span>
+                        <span class="badge">802.1Q VLANs</span>
+                        <span class="badge">VoIP</span>
+                        <span class="badge">Nginx Proxy Manager</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Software & Systems</h3>
+                    <div class="badge-list">
+                        <span class="badge">Python</span>
+                        <span class="badge">Java</span>
+                        <span class="badge">REST APIs</span>
+                        <span class="badge">Git</span>
+                        <span class="badge">Active Directory / MDM</span>
+                        <span class="badge">Hardware Acceleration</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Featured Project Cards -->
+        <section id="projects">
+            <h2 class="section-title">Featured Infrastructure & Software Projects</h2>
+            <div class="project-grid">
+                
+                <!-- Card 1 -->
+                <article class="project-card">
+                    <h3 class="project-title">Containerized AI & Computer Vision Stack</h3>
+                    <div class="badge-list">
+                        <span class="badge">Docker</span>
+                        <span class="badge">Frigate</span>
+                        <span class="badge">NVIDIA Jetson</span>
+                        <span class="badge">TensorRT</span>
+                    </div>
+                    <ul class="project-bullets">
+                        <li>Real-time computer vision pipeline utilizing GPU acceleration for low-latency video ingestion and localized event processing.</li>
+                        <li>MQTT and routing via custom API endpoints.</li>
+                    </ul>
+                    <a href="frigate.html" class="project-btn">View Computer Vision Project &rarr;</a>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="project-card">
+                    <h3 class="project-title">Automated Media Stack & Network Attached Storage</h3>
+                    <div class="badge-list">
+                        <span class="badge">Proxmox VE</span>
+                        <span class="badge">Docker</span>
+                        <span class="badge">Jellyfin</span>
+                        <span class="badge">MergerFS</span>
+                        <span class="badge">SnapRAID</span>
+                    </div>
+                    <ul class="project-bullets">
+                        <li>Multi-service, bare-metal hypervisor running automated, isolated container workloads with hardware-accelerated video transcoding.</li>
+                        <li>Configured pooled storage arrays with parity protection.</li>
+                    </ul>
+                    <a href="jellyfin.html" class="project-btn">View Media Stack Project &rarr;</a>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="project-card">
+                    <h3 class="project-title">Segmented Network & Security Infrastructure</h3>
+                    <div class="badge-list">
+                        <span class="badge">OPNsense</span>
+                        <span class="badge">802.1Q VLANs</span>
+                        <span class="badge">FreshTomato</span>
+                        <span class="badge">Unbound DNS</span>
+                    </div>
+                    <ul class="project-bullets">
+                        <li>Custom OPNsense router deployed on x86 hardware with 802.1Q trunking and isolated subnets (Trusted, Servers, IoT).</li>
+                        <li>Flashed custom firmware on access points for tagged, multi-SSID routing.</li>
+                    </ul>
+                    <a href="network.html" class="project-btn">View Network Architecture &rarr;</a>
+                </article>
+
+            </div>
+        </section>
+
+        <button id="backToTop" class="back-to-top" aria-label="Back to top">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 15-6-6-6 6"/>
+          </svg>
+        </button>
+
+        <script>
+          const backToTopBtn = document.getElementById('backToTop');
+
+            // Show button when scrolled down 300px
+            window.addEventListener('scroll', () => {
+              if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+              } else {
+                  backToTopBtn.classList.remove('visible');
+              }
+            });
+
+            // Smooth scroll to top on click
+            backToTopBtn.addEventListener('click', () => {
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+              });
+            });
+        </script>
+
+        <!-- 5. Footer -->
+        <foote class=""index-footer">
+            <div>
+                © 2026 Jackson Piet • <a href="mailto:jacksonpiet13@gmail.com">jacksonpiet13@gmail.com</a>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>

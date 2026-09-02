@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jackson Piet | Systems & Software Specialist</title>
+    <style>
+        :root {
+            --bg-main: #0b0f19;
+            --bg-card: #111827;
+            --bg-card-hover: #1f2937;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-cyan: #06b6d4;
+            --accent-blue: #3b82f6;
+            --border: #1e293b;
+            --code-bg: #030712;
+            --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(11, 15, 25, 0.9);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .brand {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0 3rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .badge {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.75rem;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--accent-blue);
+            margin-bottom: 1.25rem;
+            font-weight: 600;
+        }
+
+        .hero-summary {
+            color: var(--text-muted);
+            max-width: 780px;
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.65rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: #fff;
+            border: 1px solid var(--accent-blue);
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text-muted);
+            background: var(--bg-card);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 3.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-mono);
+        }
+
+        .section-title::before {
+            content: ">";
+            color: var(--accent-cyan);
+        }
+
+        /* Technical Competencies Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1rem;
+            color: var(--accent-cyan);
+            margin-bottom: 0.75rem;
+            font-family: var(--font-mono);
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-list li::before {
+            content: "•";
+            color: var(--accent-blue);
+            margin-right: 0.5rem;
+        }
+
+        /* Project Cards & Topology Placeholders */
+        .project-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+	    flex-direction: column;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            .project-card {
+                grid-template-columns: 1.1fr 0.9fr;
+            }
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-meta {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-bullets {
+            list-style-position: inside;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .project-bullets li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* Diagram / Diagram Placeholder */
+        .diagram-box {
+            background: var(--code-bg);
+            border-top: 1px solid var(--border);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: var(--font-mono);
+        }
+
+        @media (min-width: 768px) {
+            .diagram-box {
+                border-top: none;
+                border-left: 1px solid var(--border);
+            }
+        }
+
+        .diagram-svg {
+            width: 100%;
+            height: auto;
+            max-height: 220px;
+        }
+
+        .diagram-caption {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+            text-align: center;
+        }
+
+        /* Timeline (Experience) */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .timeline-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .role-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .company-name {
+            color: var(--accent-blue);
+        }
+
+        .timeline-date {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .timeline-details {
+            list-style-position: inside;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .timeline-details li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Education Cards */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .edu-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+
+        .edu-degree {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-school {
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-awards {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            padding-top: 3rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+        }
+
+        footer a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Responsive Navigation -->
+    <nav>
+        <div class="container nav-inner">
+            <a href="#" class="brand">JP::sys_exec</a>
+            <ul class="nav-links">
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <!-- Hero Section -->
+        header class="hero">
+            <span class="badge">Targeting Systems & Software Engineering Internships</span>
+            <h1>Jackson Piet</h1>
+            <div class="subtitle">Associate Software & Systems Specialist</div>
+            <p class="hero-summary">
+                Computer Science graduate specializing in containerized microservices, high-availability Proxmox virtualization, hardware-accelerated AI vision pipelines, and enterprise site-level IT infrastructure.
+            </p>
+            <div class="hero-actions">
+                <a href="mailto:jacksonpiet13@gmail.com" class="btn btn-primary">Contact via Email</a>
+                <a href="https://github.com" target="_blank" class="btn btn-outline">GitHub Profile</a>
+            </div>
+        </header>
+
+        <!-- Technical Competencies -->
+        <section id="skills">
+            <h2 class="section-title">Technical Architecture & Stack</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Microservices & Virtualization</h3>
+                    <ul class="skill-list">
+                        <li>Docker & Docker Compose</li>
+                        <li>Proxmox VE (LXC & VMs)</li>
+                        <li>Portainer Orchestration</li>
+                        <li>PCI / GPU Pass-through</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>AI & Edge Computing</h3>
+                    <ul class="skill-list">
+                        <li>NVIDIA CUDA / JetPack 5</li>
+                        <li>Intel QuickSync Decoding</li>
+                        <li>RetinaFace & InsightFace</li>
+                        <li>YOLOv7 Object Detection</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Software & Development</h3>
+                    <ul class="skill-list">
+                        <li>Python & Java</li>
+                        <li>SQL Database Design</li>
+                        <li>RESTful APIs & Webhooks</li>
+                        <li>PyQt / Tkinter GUI Dev</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Networking & Systems</h3>
+                    <ul class="skill-list">
+                        <li>Linux & Windows Administration</li>
+                        <li>Wireshark & Nmap Diagnostics</li>
+                        <li>Active Directory & Enterprise MDM</li>
+                        <li>Git Version Control</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Showcase -->
+        <section id="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="project-grid">
+                
+                <!-- Project 1 -->
+                <article class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Self-Hosted Containerized AI Platform & Media Infrastructure</h3>
+                        <div class="project-meta">08/2025 – Present | Homelab Environment</div>
+                        <ul class="project-bullets">
+                            <li>Architected a multi-container edge AI surveillance workflow on Linux using Docker Compose, integrating Frigate with NVIDIA JetPack 5 for hardware acceleration.</li>
+                            <li>Engineered a custom Python container leveraging InsightFace model images to replicate facial recognition pipelines, routing event webhooks via Double Take.</li>
+                            <li>Configured a high-availability Proxmox VE hypervisor running isolated LXC containers (Jellyfin, Radarr, Sonarr) with Intel QuickSync GPU pass-through.</li>
+                        </ul>
+                        <div class="tag-group">
+                            <span class="tag">Proxmox VE</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">NVIDIA JetPack</span>
+                            <span class="tag">LXC</span>
+                            <span class="tag">Python</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 2: Automated Media Stack -->
+                <article class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">Automated Microservices &amp; Distributed Storage Stack</h3>
+                    <div class="project-meta">Homelab Production Infrastructure</div>
+                    <p class="project-description">
+                    A resilient, event-driven media processing stack built on Proxmox LXC microservices, featuring an automated 7-step data lifecycle, zero-copy mergerfs/SnapRAID storage pooling, and Intel QuickSync hardware transcoding.
+                    </p>
+                    <div class="tag-group" style="margin-bottom: 1.25rem;">
+                    <span class="tag">Proxmox VE</span>
+                    <span class="tag">OpenMediaVault 8</span>
+                    <span class="tag">Docker / LXC</span>
+                    <span class="tag">mergerfs &amp; SnapRAID</span>
+                    <span class="tag">REST APIs</span>
+                    <span class="tag">Intel QuickSync</span>
+                    </div>
+                    <!-- Direct Call-to-Action to your Showcase Page -->
+                    <a href="jellyfin.html" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">
+                    View Architecture Showcase &rarr;
+                    </a>
+                </div>
+                </article>
+            </div>
+        </section>
+
+      
+        <!-- Education & Awards -->
+        <section id="education">
+            <h2 class="section-title">Education & Honors</h2>
+            <div class="edu-grid">
+                
+                <div class="edu-card">
+                    <div class="edu-degree">BS in Computer Science</div>
+                    <div class="edu-school">Western Governors University (10/2025 – 08/2026)</div>
+                    <div class="edu-awards">
+                        <strong>Honor:</strong> Advanced Java Excellence Award
+                    </div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-degree">AAS in CIT: Cyber Defense</div>
+                    <div class="edu-school">Roane State Community College (01/2023 – 05/2025)</div>
+                    <div class="edu-awards">
+                        <strong>GPA:</strong> 4.0 | <strong>Honors:</strong> CIT Award, Academic Achievement Award, Beulah Davis Outstanding Writer Award
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Jackson Piet • Oak Ridge, TN • <a href="mailto:jacksonpiet13@gmail.com">jacksonpiet13@gmail.com</a></p>
+            <p style="margin-top: 0.5rem; color: #4b5563;">Hosted on GitHub Pages</p>
+        </footer>
+
+    </div>
+
+    <!-- Minimal JS for Nav Anchor Scrolling -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
