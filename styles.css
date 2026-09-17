@@ -86,9 +86,15 @@
       max-width: 100%;
       height: auto;
     }
-    .diagram-container svg { width: 100%; height: auto; min-width: 800px; display: block; }
+    .diagram-container svg { width: 100%; height: auto; min-width: 800px; display: block; background: #090d12; }
 
     /* Grid Layouts */
+.grid-1 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr;
