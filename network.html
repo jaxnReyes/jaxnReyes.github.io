@@ -3,153 +3,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Automated Media Stack - Jellyfin Pipeline</title>
+  <title>Segmented Network &amp; Security Infrastructure | Jackson Piet</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-  <nav>
-    <a href="index.html" class="back-link">&larr; Back to Landing Page</a>
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="Subpage Navigation">
+    <div class="nav-container">
+      <a href="index.html" class="back-link">&larr; Back to Landing Page</a>
+      <a href="index.html" class="nav-logo">JP<span>.dev</span></a>
+    </div>
   </nav>
 
-
-  <h1>COMING SOON</h1>
-<!-- 
-  <header>
-    <h1>Automated Media Stack</h1>
-    <p>A resilient, event-driven media processing stack hosted on isolated Proxmox VE LXC containers and backed by an OpenMediaVault NFS storage pool with zero-copy hardlinks.</p>
-    
-    <div class="badge-grid">
-      <span class="badge">Proxmox VE</span>
-      <span class="badge">LXC Containers</span>
-      <span class="badge">OpenMediaVault 8</span>
-      <span class="badge">NFS Mounts</span>
-      <span class="badge">mergerfs &amp; SnapRAID</span>
-      <span class="badge">Intel QuickSync (VAAPI)</span>
-      <span class="badge">Nginx Proxy Manager</span>
-    </div>
-  </header> -->
-
-  <!-- System Architecture Diagram Card -->
-  <!-- <div class="section-card">
-    <div class="section-title">
-      <span>System Integration Topology</span>
-    </div>
-    <div class="diagram-container">
-      <img src="images/frigate.svg" alt="Media Server Stack Topology" class="diagram-image">
-    </div>
-  </div> -->
-
-<!-- Detailed Data Flow Lifecycle -->
-  <!-- <div class="section-card">
-    <div class="section-title">
-      <span>End-to-End Execution</span>
-    </div>
-    <ol class="workflow-list">
-      <li>
-        <strong>Client / User Request:</strong> The client issues a secure request to stream or download media.
-      </li>
-      <li>
-        <strong>HTTPS Reverse Proxy:</strong> The request travels through Nginx Proxy Manager which routes traffic to Seerr or Jellyfin.
-      </li>
-      <li>
-        <strong>Trigger Request:</strong> Seerr processes the user request and sends a REST API payload to Sonarr (TV) or Radarr (Movies) to add the requested media.
-      </li>
-      <li>
-        <strong>Download Job:</strong> Sonarr/Radarr queries indexers via Prowlarr, evaluates the indexed releases, and sends a download task to SABnzbd if a release matches the configured quality profile.
-      </li>
-      <li>
-        <strong>Write to NFS:</strong> SABnzbd fetches the media release, extracts the files, and writes the completed download to the NFS mount of OMV, located in <code>/mnt/storage/downloads/complete/</code>.
-      </li>
-      <li>
-        <strong>Hardlink:</strong> Sonarr/Radarr detects job completion, creates an instant zero-copy hardlink from <code>/mnt/storage/downloads/complete/</code> to <code>/mnt/storage/data/media/</code>, and triggers Bazarr to search and download matching subtitles.
-      </li>
-      <li>
-        <strong>Read Media:</strong> Jellyfin monitors the media libraries within <code>/mnt/storage/data/media/</code>, reading structured files over the local network, and rendering streams using Intel QuickSync hardware transcoding.
-      </li>
-    </ol>
-  </div> -->
-
-  <!-- Key Architecture Engineering Highlights -->
-  <!-- <div class="section-card">
-    <div class="section-title">
-      <span>Infrastructure Highlights</span>
-    </div>
-    <div class="grid-2">
-      <div class="feature-card">
-        <h3>01. Zero-Copy Hardlink Execution</h3>
-        <p>Configured <code>mergerfs</code> storage pools across OpenMediaVault NFS mounts. By aligning root storage paths, the automation stack issues instant filesystem inode references (hardlinks) from scratch space to production libraries without duplicate disk writes or cross-network copies.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>02. Hardware-Accelerated Transcoding</h3>
-        <p>Provisioned Intel QuickSync GPU passthrough into unprivileged Proxmox LXC containers. Configured Linux device node permissions (<code>/dev/dri/renderD128</code>) to execute real-time video transcoding via VAAPI hardware pipelines with minimal CPU overhead.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>03. Reverse Proxy &amp; Network Isolation</h3>
-        <p>Routed all ingress control traffic through Nginx Proxy Manager to manage SSL certificates. Internal service communication resides strictly on isolated container subnets, exposing only required reverse proxy ports.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>04. Storage Redundancy &amp; Parity</h3>
-        <p>Implemented SnapRAID parity protection alongside <code>mergerfs</code> storage pooling on the OpenMediaVault NAS host, protecting pooled data from single-disk hardware failures.</p>
+  <!-- Project Header -->
+  <header class="project-header">
+    <div class="container">
+      <span class="project-category">Network Engineering &amp; Security</span>
+      <h1>Segmented Network &amp; Security Infrastructure</h1>
+      <p class="hero-subtitle">Router-on-a-stick architecture featuring OPNsense firewall routing, 802.1Q VLAN trunking, and custom access point firmware bridging.</p>
+      
+      <div class="badge-grid">
+        <span class="badge">OPNsense</span>
+        <span class="badge">802.1Q VLANs</span>
+        <span class="badge">TP-Link Managed Switch</span>
+        <span class="badge">FreshTomato AP</span>
+        <span class="badge">Unbound DNS</span>
+        <span class="badge">InterVLAN Routing</span>
       </div>
     </div>
-  </div> -->
+  </header>
 
-  <!-- Screenshot -->
-  <!-- <div class="section-card">
-    <div class="section-title">
-      <span>System Screenshots</span>
-    </div>
-    <div class="grid-2">
-      <div class="screenshot-card"> -->
-        <!-- <img src="images/proxmox.png" alt="Proxmox Summary"> -->
-        <!-- <div class="screenshot-info">
-          <h4>Proxmox VE Microservice Orchestration</h4>
-          <p>Proxmox VE datacenter view showcasing isolated LXC containers with low background resource overhead.</p>
+  <main class="container project-detail-container">
+
+    <!-- Topology Diagram Card -->
+    <section class="section-card">
+      <h2 class="section-title">System Integration Topology</h2>
+      <p>Segmented enterprise topology featuring an OPNsense firewall host managing multi-VLAN routing over an 802.1Q trunk line connected to a managed switch and a FreshTomato wireless access point.</p>
+      <div class="diagram-container">
+        <img src="images/network.svg" alt="Segmented Network &amp; Security Architecture Diagram" class="diagram-image">
+      </div>
+    </section>
+
+    <!-- Detailed Subnet & VLAN Breakdown -->
+    <section class="section-card">
+      <h2 class="section-title">Network Segmentation &amp; Subnet Breakdown</h2>
+      <p>Network traffic is logically partitioned into dedicated IEEE 802.1Q VLANs enforced via OPNsense firewall rules to prevent unauthorized lateral movement.</p>
+      <ul class="feature-list">
+        <li><strong>Servers VLAN (10.0.10.0/24):</strong> Protected and isolated subnet dedicated to host hypervisors and core infrastructure services.</li>
+        <li><strong>Trusted VLAN (10.0.20.0/24):</strong> Administrative workstation segment with full inter-VLAN access to manage all subnets and host interfaces.</li>
+        <li><strong>Kids VLAN (10.0.30.0/24):</strong> Restricted subnet with strict firewall schedules, Unbound DNS filtering, and limited outbound access.</li>
+        <li><strong>Guest VLAN (10.0.50.0/24):</strong> Isolated wireless segment providing internet access while blocking all internal LAN and subnet communications.</li>
+        <li><strong>Internet of Things VLAN (10.0.60.0/24):</strong> Isolated subnet for smart TVs, printers, and IoT devices, preventing compromised hardware from reaching core subnets.</li>
+        <li><strong>Surveillance VLAN (10.0.70.0/24):</strong> Dedicated IP camera network (Reolink &amp; GWSecurity) isolated from WAN egress and routed directly to NVR.</li>
+      </ul>
+    </section>
+
+    <!-- Key Architecture Engineering Highlights -->
+    <section class="section-card">
+      <h2 class="section-title">Infrastructure &amp; Engineering Highlights</h2>
+      <div class="grid-3">
+        <div class="feature-card">
+          <h3>OPNsense Router-on-a-Stick</h3>
+          <p>Utilizes a single physical interface connected via an 802.1Q trunk port to a TP-Link managed switch, efficiently routing and filtering inter-VLAN traffic at line rate.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>FreshTomato Wireless Bridging</h3>
+          <p>Flashed custom open-source FreshTomato firmware onto a Netgear Nighthawk router to act as a multi-SSID wireless access point, tagging wireless traffic directly to respective VLAN IDs.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Strict InterVLAN Firewall Policies</h3>
+          <p>Configured stateful firewall rules in OPNsense to enforce zero-trust posture, allowing default outbound internet access while denying cross-subnet communication except for explicit administrative overrides.</p>
         </div>
       </div>
-      <div class="screenshot-card"> -->
-        <!-- <img src="images/omv.png" alt="OpenMediaVault NFS Shares"> -->
-        <!-- <div class="screenshot-info">
-          <h4>NAS Storage Pool &amp; NFS Mounts</h4>
-          <p>OpenMediaVault dashboard displaying 21.6 TB mergerfs-pooled capacity across physical drives alongside real-time S.M.A.R.T. health monitoring.</p>
-        </div>
+    </section>
+
+    <div class="cta-container">
+      <a href="index.html#projects" class="btn btn-secondary">&larr; Back to All Projects</a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Jackson Piet. All rights reserved.</p>
+      <div class="social-links">
+        <a href="index.html">Home</a>
+        <a href="https://github.com/jaxnReyes" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:jacksonpiet13@gmail.com">Email</a>
       </div>
     </div>
-  </div> -->
-  
-  <button id="backToTop" class="back-to-top" aria-label="Back to top">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="m18 15-6-6-6 6"/>
-    </svg>
-  </button>
+  </footer>
+
+<!-- Lightbox Modal Container -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close Lightbox">&times;</button>
+    <img class="lightbox-content" id="lightboxImg" src="" alt="Enlarged view">
+  </div>
+
   <script>
-    const backToTopBtn = document.getElementById('backToTop');
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('lightboxModal');
+      const modalImg = document.getElementById('lightboxImg');
+      const closeBtn = document.getElementById('lightboxClose');
 
-    // Show button when scrolled down 300px
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTopBtn.classList.add('visible');
-      } else {
-        backToTopBtn.classList.remove('visible');
-      }
-    });
+      if (!modal || !modalImg || !closeBtn) return;
 
-    // Smooth scroll to top on click
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+      // Select all diagram images and screenshot thumbnails
+      const zoomableImages = document.querySelectorAll('.diagram-image, .architecture-diagram, .screenshot-card img');
+
+      zoomableImages.forEach(img => {
+        img.addEventListener('click', () => {
+          modal.classList.add('active');
+          modalImg.src = img.src;
+          modalImg.alt = img.alt || 'Enlarged diagram';
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+      });
+
+      const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+
+      closeBtn.addEventListener('click', closeModal);
+
+      // Close when clicking outside the image on the dark backdrop
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Close on pressing the Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
       });
     });
   </script>
-  <footer>
-    <p>Jackson Piet &mdash; Systems &amp; Software Specialist &mdash; Oak Ridge, TN</p>
-  </footer>
-  
+
 </body>
 </html>

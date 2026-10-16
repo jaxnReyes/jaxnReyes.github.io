@@ -3,150 +3,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Automated Media Stack - Jellyfin Pipeline</title>
+  <title>Containerized AI &amp; Computer Vision Stack | Jackson Piet</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-  <nav>
-    <a href="index.html" class="back-link">&larr; Back to Landing Page</a>
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="Subpage Navigation">
+    <div class="nav-container">
+      <a href="index.html" class="back-link">&larr; Back to Landing Page</a>
+      <a href="index.html" class="nav-logo">JP<span>.dev</span></a>
+    </div>
   </nav>
-<!-- 
-  <header>
-    <h1>Automated Media Stack</h1>
-    <p>A resilient, event-driven media processing stack hosted on isolated Proxmox VE LXC containers and backed by an OpenMediaVault NFS storage pool with zero-copy hardlinks.</p>
-    
-    <div class="badge-grid">
-      <span class="badge">Proxmox VE</span>
-      <span class="badge">LXC Containers</span>
-      <span class="badge">OpenMediaVault 8</span>
-      <span class="badge">NFS Mounts</span>
-      <span class="badge">mergerfs &amp; SnapRAID</span>
-      <span class="badge">Intel QuickSync (VAAPI)</span>
-      <span class="badge">Nginx Proxy Manager</span>
-    </div>
-  </header> -->
 
-  <!-- System Architecture Diagram Card -->
-  <div class="section-card">
-    <div class="section-title">
-      <span>System Integration Topology</span>
+  <!-- Project Header -->
+  <header class="project-header">
+    <div class="container">
+      <span class="project-category">AI Engineering &amp; Computer Vision</span>
+      <h1>Containerized AI &amp; Computer Vision Stack</h1>
+      <p class="hero-subtitle">A containerized AI-driven security and object detection pipeline utilizing Frigate NVR, Double Take, and InsightFace with hardware acceleration on dedicated edge compute boards.</p>
+      
+      <div class="badge-grid">
+        <span class="badge">Frigate NVR</span>
+        <span class="badge">Docker Compose</span>
+        <span class="badge">NVIDIA Jetson Xavier</span>
+        <span class="badge">TensorRT Acceleration</span>
+        <span class="badge">Double-Take &amp; InsightFace</span>
+        <span class="badge">MQTT Broker</span>
+      </div>
     </div>
-    <div class="diagram-container">
-      <img src="images/frigate.svg" alt="Media Server Stack Topology" class="diagram-image">
+  </header>
+
+  <main class="container project-detail-container">
+
+    <!-- Surveillance Architecture Card -->
+    <section class="section-card">
+      <h2 class="section-title">Surveillance Topology &amp; Inference Pipeline</h2>
+      <p>Low-latency video stream decoding and real-time object/facial recognition pipeline integrated across local edge hardware.</p>
+      <div class="diagram-container">
+        <img src="images/frigate.svg" alt="Computer Vision Architecture Diagram" class="diagram-image">
+      </div>
+    </section>
+
+    <!-- Detailed Data Flow Lifecycle -->
+    <section class="section-card">
+      <h2 class="section-title">End-to-End Inference &amp; Event Execution Lifecycle</h2>
+      <ol class="workflow-list">
+        <li>
+          <strong>RTSP Stream Ingestion:</strong> Frigate container pulls live camera feeds via RTSP, where hardware-accelerated decoding processes video frames and performs initial object detection.
+        </li>
+        <li>
+          <strong>MQTT Event Trigger:</strong> Upon detecting an object or target class, Frigate fires an initial MQTT Event Trigger payload to Double-Take (Unified Face Processor).
+        </li>
+        <li>
+          <strong>HTTP Snapshot Request:</strong> Double-Take queries Frigate via an HTTP Snapshot Request to retrieve high-resolution bounding box image crops.
+        </li>
+        <li>
+          <strong>HTTP POST Image (Face Crop):</strong> Double-Take forwards the extracted facial snapshot via an HTTP POST request to the custom FastAPI / DeepStack-spec container running on a dedicated Jetson Xavier node.
+        </li>
+        <li>
+          <strong>Model Inference &amp; JSON Response:</strong> The InsightFace Inference Engine running on NVIDIA hardware executes facial vector comparison and returns a JSON Response containing verified names and confidence percentages.
+        </li>
+        <li>
+          <strong>MQTT Match Result &amp; Automation:</strong> Double-Take processes the match data and dispatches an MQTT Match Result payload to Home Assistant to trigger real-time automation routines, security alerts, and event dashboards.
+        </li>
+      </ol>
+    </section>
+
+    <!-- Key Architecture Engineering Highlights -->
+    <section class="section-card">
+      <h2 class="section-title">Multi-Host Infrastructure &amp; Architecture Highlights</h2>
+      <div class="grid-3">
+        <div class="feature-card">
+          <h3>Proxmox VE Microservice Isolation</h3>
+          <p>Runs unprivileged Linux Containers (LXC) to isolate Frigate NVR, Double-Take, and Home Assistant microservices. This preserves hypervisor resources while maintaining low-latency network I/O and event routing across virtual interfaces.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Hardware-Accelerated Edge Offloading</h3>
+          <p>Offloads heavy CUDA/TensorRT matrix calculations and facial recognition workloads to a dedicated NVIDIA Jetson Xavier host running Docker Compose.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Custom API Interoperability</h3>
+          <p>Implements a custom FastAPI / DeepStack-spec wrapper around InsightFace in Python, enabling seamless API integration with Double-Take while maintaining real-time inference speed on edge hardware.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-container">
+      <a href="index.html#projects" class="btn btn-secondary">&larr; Back to All Projects</a>
     </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Jackson Piet. All rights reserved.</p>
+      <div class="social-links">
+        <a href="index.html">Home</a>
+        <a href="https://github.com/jaxnReyes" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:jacksonpiet13@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+<!-- Lightbox Modal Container -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close Lightbox">&times;</button>
+    <img class="lightbox-content" id="lightboxImg" src="" alt="Enlarged view">
   </div>
 
-<!-- Detailed Data Flow Lifecycle -->
-  <!-- <div class="section-card">
-    <div class="section-title">
-      <span>End-to-End Execution</span>
-    </div>
-    <ol class="workflow-list">
-      <li>
-        <strong>Client / User Request:</strong> The client issues a secure request to stream or download media.
-      </li>
-      <li>
-        <strong>HTTPS Reverse Proxy:</strong> The request travels through Nginx Proxy Manager which routes traffic to Seerr or Jellyfin.
-      </li>
-      <li>
-        <strong>Trigger Request:</strong> Seerr processes the user request and sends a REST API payload to Sonarr (TV) or Radarr (Movies) to add the requested media.
-      </li>
-      <li>
-        <strong>Download Job:</strong> Sonarr/Radarr queries indexers via Prowlarr, evaluates the indexed releases, and sends a download task to SABnzbd if a release matches the configured quality profile.
-      </li>
-      <li>
-        <strong>Write to NFS:</strong> SABnzbd fetches the media release, extracts the files, and writes the completed download to the NFS mount of OMV, located in <code>/mnt/storage/downloads/complete/</code>.
-      </li>
-      <li>
-        <strong>Hardlink:</strong> Sonarr/Radarr detects job completion, creates an instant zero-copy hardlink from <code>/mnt/storage/downloads/complete/</code> to <code>/mnt/storage/data/media/</code>, and triggers Bazarr to search and download matching subtitles.
-      </li>
-      <li>
-        <strong>Read Media:</strong> Jellyfin monitors the media libraries within <code>/mnt/storage/data/media/</code>, reading structured files over the local network, and rendering streams using Intel QuickSync hardware transcoding.
-      </li>
-    </ol>
-  </div> -->
-
-  <!-- Key Architecture Engineering Highlights -->
-  <!-- <div class="section-card">
-    <div class="section-title">
-      <span>Infrastructure Highlights</span>
-    </div>
-    <div class="grid-2">
-      <div class="feature-card">
-        <h3>01. Zero-Copy Hardlink Execution</h3>
-        <p>Configured <code>mergerfs</code> storage pools across OpenMediaVault NFS mounts. By aligning root storage paths, the automation stack issues instant filesystem inode references (hardlinks) from scratch space to production libraries without duplicate disk writes or cross-network copies.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>02. Hardware-Accelerated Transcoding</h3>
-        <p>Provisioned Intel QuickSync GPU passthrough into unprivileged Proxmox LXC containers. Configured Linux device node permissions (<code>/dev/dri/renderD128</code>) to execute real-time video transcoding via VAAPI hardware pipelines with minimal CPU overhead.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>03. Reverse Proxy &amp; Network Isolation</h3>
-        <p>Routed all ingress control traffic through Nginx Proxy Manager to manage SSL certificates. Internal service communication resides strictly on isolated container subnets, exposing only required reverse proxy ports.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>04. Storage Redundancy &amp; Parity</h3>
-        <p>Implemented SnapRAID parity protection alongside <code>mergerfs</code> storage pooling on the OpenMediaVault NAS host, protecting pooled data from single-disk hardware failures.</p>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- Screenshot -->
-  <!-- <div class="section-card">
-    <div class="section-title">
-      <span>System Screenshots</span>
-    </div>
-    <div class="grid-2">
-      <div class="screenshot-card"> -->
-        <!-- <img src="images/proxmox.png" alt="Proxmox Summary"> -->
-        <!-- <div class="screenshot-info">
-          <h4>Proxmox VE Microservice Orchestration</h4>
-          <p>Proxmox VE datacenter view showcasing isolated LXC containers with low background resource overhead.</p>
-        </div>
-      </div>
-      <div class="screenshot-card"> -->
-        <!-- <img src="images/omv.png" alt="OpenMediaVault NFS Shares"> -->
-        <!-- <div class="screenshot-info">
-          <h4>NAS Storage Pool &amp; NFS Mounts</h4>
-          <p>OpenMediaVault dashboard displaying 21.6 TB mergerfs-pooled capacity across physical drives alongside real-time S.M.A.R.T. health monitoring.</p>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  
-  <button id="backToTop" class="back-to-top" aria-label="Back to top">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="m18 15-6-6-6 6"/>
-    </svg>
-  </button>
   <script>
-    const backToTopBtn = document.getElementById('backToTop');
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('lightboxModal');
+      const modalImg = document.getElementById('lightboxImg');
+      const closeBtn = document.getElementById('lightboxClose');
 
-    // Show button when scrolled down 300px
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTopBtn.classList.add('visible');
-      } else {
-        backToTopBtn.classList.remove('visible');
-      }
-    });
+      if (!modal || !modalImg || !closeBtn) return;
 
-    // Smooth scroll to top on click
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+      // Select all diagram images and screenshot thumbnails
+      const zoomableImages = document.querySelectorAll('.diagram-image, .architecture-diagram, .screenshot-card img');
+
+      zoomableImages.forEach(img => {
+        img.addEventListener('click', () => {
+          modal.classList.add('active');
+          modalImg.src = img.src;
+          modalImg.alt = img.alt || 'Enlarged diagram';
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+      });
+
+      const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+
+      closeBtn.addEventListener('click', closeModal);
+
+      // Close when clicking outside the image on the dark backdrop
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Close on pressing the Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
       });
     });
   </script>
-  <footer>
-    <p>Jackson Piet &mdash; Systems &amp; Software Specialist &mdash; Oak Ridge, TN</p>
-  </footer>
-  
+
 </body>
 </html>

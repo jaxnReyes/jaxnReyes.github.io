@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gym Membership Attrition Prediction Model | Jackson Piet</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="Subpage Navigation">
+    <div class="nav-container">
+      <a href="index.html" class="back-link">&larr; Back to Landing Page</a>
+      <span class="nav-logo">JP<span>.dev</span></span>
+    </div>
+  </nav>
+
+  <!-- Project Header -->
+  <header class="project-header">
+    <div class="container">
+      <span class="project-category">Advanced AI &amp; Analytics</span>
+      <h1>Gym Membership Attrition Prediction Model</h1>
+      <p class="hero-subtitle">Predicting member churn risk through supervised machine learning, XGBoost classification, and SMOTE data balancing.</p>
+      
+      <div class="badge-grid">
+        <span class="badge">Python 3.12</span>
+        <span class="badge">XGBoost</span>
+        <span class="badge">Scikit-learn</span>
+        <span class="badge">SMOTE</span>
+        <span class="badge">Pandas &amp; NumPy</span>
+        <span class="badge">Git / GitHub</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container project-detail-container">
+
+    <!-- Problem Statement Card -->
+    <section class="section-card">
+      <div class="section-title">
+        <span>Problem Statement &amp; Professional Context</span>
+      </div>
+      <p>
+        Member attrition represents the primary driver of unexpected revenue loss for gyms and health clubs. Traditional management frameworks rely heavily on reactive feedback mechanisms (such as Listen360), which capture only a fraction of dissatisfied members before cancellation notices are submitted.
+      </p>
+      <p class="professional-tiein">
+        <strong>Professional Context:</strong> Inspired by my hands-on expeerience servicing regional fitness facilities, this project bridges advanced machine learning coursework with real-world membership lifecycle management, shifting management from reactive cancellation handling to proactive, data-driven retention strategies.
+      </p>
+    </section>
+
+    <!-- Data Pipeline & Engineering -->
+    <section class="section-card">
+      <div class="section-title">
+        <span>Data Preprocessing &amp; Feature Engineering</span>
+      </div>
+      <p>
+        The automated data pipeline ingests raw operational data, preparing features for robust predictive classification:
+      </p>
+      <ul class="feature-list">
+        <li><strong>Data Ingestion &amp; Sanitization:</strong> The dataset is stripped of non-predictive PII (names, phone numbers).</li>
+        <li><strong>Missing Value Imputation:</strong> Continuous numerical features are cleaned and imputed using median values to prevent pipeline exceptions.</li>
+        <li><strong>Categorical Encoding &amp; Scaling:</strong> Categorical features are transformed using one-hot encoding, and numerical attributes are standardized.</li>
+        <li><strong>Class Balancing via SMOTE:</strong> Synthetic Minority Over-sampling Technique (SMOTE) is applied on training data to mitigate severe class imbalance between active and churned members.</li>
+      </ul>
+    </section>
+
+    <!-- Model Training & Evaluation -->
+    <section class="section-card">
+      <div class="section-title">
+        <span>Model Training &amp; Evaluation Metrics</span>
+      </div>
+      <p>
+        Implemented an <strong>XGBoost (eXtreme Gradient Boosting)</strong> decision tree ensemble model optimized via GridSearchCV hyperparameters (<code>n_estimators</code>, <code>max_depth</code>, <code>min_child_weight</code>) to evaluate non-linear feature relationships.
+      </p>
+      
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <span class="metric-value">88.0%</span>
+          <span class="metric-label">Evaluated Recall Score</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-value">82.0%</span>
+          <span class="metric-label">Evaluated F1 Score</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-value">&ge; 0.85</span>
+          <span class="metric-label">Recall Target Met</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Actionable Insights & Business Impact -->
+    <section class="section-card">
+      <div class="section-title">
+        <span>Actionable Insights &amp; Business Impact</span>
+      </div>
+      <p>
+        The trained model generates high-risk member reports for General Managers and Membership Leads.
+      </p>
+      <ul class="feature-list">
+        <li><strong>Proactive Retention:</strong> Empowers staff to initiate targeted outreach and personalized engagement before account cancellation.</li>
+        <li><strong>Secure Local Deployment:</strong> Runs locally on an isolated workstation environment, ensuring sensitive member data never crosses public networks.</li>
+      </ul>
+      
+      <div class="cta-container">
+        <a href="https://github.com/jaxnReyes/Gym-Membership-Attrition-Model" target="_blank" rel="noopener" class="btn btn-primary">View Source Code on GitHub &rarr;</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Jackson Piet. All rights reserved.</p>
+      <div class="social-links">
+        <a href="index.html">Home</a>
+        <a href="https://github.com/jaxnReyes" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:jacksonpiet13@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
